@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Sedgwick+Ave+Display&display=swap')
+
 :host
     display: flex
     justify-content: center
@@ -11,29 +13,75 @@
         .row:first-of-type
             height: 90%
 
-            a
-                width: 50%
-                height: 50vh
+        a
+            width: 50%
+            height: 50vh
 
-                mat-card
+            text-decoration: none
+
+            mat-card
+                position: relative
+
+                display: flex
+                justify-content: flex-end
+
+                width: 100%
+                height: 100%
+
+                box-shadow: 5px 5px 10px rgb(46, 35, 35)
+
+                transition: .2s linear
+                overflow: hidden
+
+                &:hover
+                    transform: scale(110%)
+
+                p
+                    position: absolute
+                    top: 20%
+
                     width: 100%
-                    height: 100%
 
-                    box-shadow: 5px 5px 10px rgb(46, 35, 35)
+                    font-family: 'Caveat', cursive
+                    font-family: 'Sedgwick Ave Display', cursive
+                    font-size: 50px
+                    font-weight: bolder
+                    color: white
+                    text-align: center
+                    text-shadow: 0 1px black, 1px 0 black, -1px 0 black, 0 -1px black
 
-                    transition: .2s linear
+                .techs
+                    display: flex
+                    justify-content: space-around
+                    align-items: center
 
-                    &:hover
-                        transform: scale(110%)
+                    background-color: rgba(0, 0, 0, .7)
 
-                #cv
-                    background-image: url(../assets/img/cv.jpg)
-                    background-size: auto 100%
+                    padding: 5px 15px 2px 15px
 
-                #fichas
-                    background-image: url(../assets/img/fichas.jpg)
-                    background-position-x: right
-                    background-size: auto 100%
+                    .angular
+                        width: 5vh
+
+                    .material
+                        width: 3.8vh
+
+                    .firebase
+                        width: 4vh
+
+                    .bootstrap
+                        width: 4.8vh
+
+                    .hcj
+                        width: 16vh
+
+            #cv
+                background-image: url(../assets/img/cv.jpg)
+                background-size: auto 100%
+
+            #fichas
+                background-image: url(../assets/img/fichas.jpg)
+                background-position-x: right
+                background-size: auto 100%
 
 #pie
     height: 37px
