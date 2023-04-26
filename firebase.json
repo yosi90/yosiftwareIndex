@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "dist/yosiftware-index",
     "ignore": [
       "firebase.json",
       "**/.*",
