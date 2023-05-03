@@ -53,3 +53,45 @@ a.github:hover,
 a.github:active,
 a.github:focus
     background-color: black
+
+@media screen and (max-width: 992px)
+    #copy
+        font-size: 11px
+
+    #pie 
+        height: 30px
+
+        .social-icons 
+            a
+                width: 38px !important
+                height: 38px !important
+
+                &::before
+                    margin-bottom: 20px
+
+            .github
+                font-size: 24px !important
+
+@media screen and (max-width: 767px)
+    #copy
+        font-size: 6px
+
+    #pie 
+        height: 20px
+
+        border-radius: 6px
+
+        margin-bottom: 20px
+
+        .social-icons 
+            a
+                width: 28px !important
+                height: 28px !important
+
+                font-size: 15px !important
+
+                &::before
+                    margin-bottom: 20px
+
+            .github
+                font-size: 17px !important
