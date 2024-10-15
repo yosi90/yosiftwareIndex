@@ -24,6 +24,7 @@
     "firebase": "^9.20.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "yosiftware-index": "file:",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {

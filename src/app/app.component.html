@@ -1,19 +1,26 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 d-flex justify-content-around align-items-center">
+        <div class="shadows">
+            <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center"><div class="cardShadow"></div></div>
+            <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center"><div class="cardShadow"></div></div>
+            <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center"><div class="cardShadow"></div></div>
+            <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center"><div class="cardShadow"></div></div>
+        </div>
+        <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center">
             <a class="card" href="https://cv.yosiftware.es/" target="_blank">
                 <mat-card id="cv">
                     <p>Curriculum</p>
                     <div class="techs">
                         <img class="angular" src="../assets/img/angular.png" alt=""
                             matTooltip="Angular - Framework del proyecto">
-                        <img class="firebase" src="../assets/img/firebase.png" alt=""
-                            matTooltip="Firebase - Hosting">
+                        <img class="firebase" src="../assets/img/firebase.png" alt="" matTooltip="Firebase - Hosting">
                         <img class="material" src="../assets/img/material.svg" alt="" matTooltip="Material angular">
                         <img class="bootstrap" src="../assets/img/bootstrap.png" alt="" matTooltip="Bootstrap">
                     </div>
                 </mat-card>
             </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center">
             <a class="card" href="https://tv.yosiftware.es/" target="_blank">
                 <mat-card id="tv">
                     <p>Un televisor</p>
@@ -22,6 +29,8 @@
                     </div>
                 </mat-card>
             </a>
+        </div>
+        <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center">
             <a class="card" href="https://rol.yosiftware.es/" target="_blank">
                 <mat-card id="fichas">
                     <p>Fichas 3.5</p>
@@ -40,11 +49,34 @@
                 </mat-card>
             </a>
         </div>
+        <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center">
+            <a class="card" href="https://libros.yosiftware.es/" target="_blank">
+                <mat-card id="libros">
+                    <p>Memoria</p>
+                       <p>  bibliográfica</p>
+                    <div class="techs">
+                        <img class="angular" src="../assets/img/angular.png" alt=""
+                            matTooltip="Angular - Framework del proyecto">
+                        <img class="firebase" src="../assets/img/firebase.png" alt=""
+                            matTooltip="Firebase - Hosting">
+                        <img class="material" src="../assets/img/material.svg" alt="" matTooltip="Material angular">
+                        <img class="bootstrap" src="../assets/img/bootstrap.png" alt="" matTooltip="Bootstrap">
+                        <img class="python" src="../assets/img/spring.png" alt=""
+                            matTooltip="Spring - Api conexión Sql server">
+                        <img class="sqlserver" src="../assets/img/sqlserver.png" alt=""
+                            matTooltip="Sql server - Persistencia de datos">
+                    </div>
+                </mat-card>
+            </a>
+        </div>
+    </div>
+    <div class="row reset">
+        <button mat-raised-button (click)="resetCards();" *ngIf="resetVisible">Resetear</button>
     </div>
     <div id="pie" class="row align-items-center bg-black mt-3">
         <div class="col-md-8 col-8">
             <p id="copy" class="ms-2">
-                Copyright &copy; 2176 todos los derechos reservados por
+                Copyright &copy; 2176
                 <a href="#">Yosiftware S.A.</a>
             </p>
         </div>
