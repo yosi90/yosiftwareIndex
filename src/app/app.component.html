@@ -1,79 +1,35 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="shadows">
-            <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center"><div class="cardShadow"></div></div>
-            <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center"><div class="cardShadow"></div></div>
-            <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center"><div class="cardShadow"></div></div>
-            <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center"><div class="cardShadow"></div></div>
-        </div>
-        <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center">
-            <a class="card" href="https://cv.yosiftware.es/" target="_blank" style="transform:perspective(500px) rotateX(0.802778deg) rotateY(6.17972deg);">
-                <mat-card id="cv">
-                    <p>Curriculum</p>
-                    <div class="techs">
-                        <img class="angular" src="../assets/img/angular.png" alt=""
-                            matTooltip="Angular - Framework del proyecto">
-                        <img class="firebase" src="../assets/img/firebase.png" alt="" matTooltip="Firebase - Hosting">
-                        <img class="material" src="../assets/img/material.svg" alt="" matTooltip="Material angular">
-                        <img class="bootstrap" src="../assets/img/bootstrap.png" alt="" matTooltip="Bootstrap">
-                    </div>
+    <main class="projects">
+        <section class="simple-projects">
+            <a class="simple-card" *ngFor="let project of simpleProjects" [href]="project.url" target="_blank" [attr.aria-label]="project.title">
+                <mat-card>
+                    <div class="simple-image" [ngClass]="project.imageClass"></div>
+                    <p class="simple-title">{{ project.title }}</p>
                 </mat-card>
             </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center">
-            <a class="card" href="https://zoogenesis.yosiftware.es/" target="_blank">
-                <mat-card id="zoogenesis">
-                    <p>ZooGenesis</p>
-                    <div class="techs">
-                        <img class="angular" src="../assets/img/angular.png" alt=""
-                            matTooltip="Angular - Framework del proyecto">
-                        <img class="firebase" src="../assets/img/firebase.png" alt=""
-                            matTooltip="Firebase - Hosting, Realtime database y Authentication">
-                        <img class="material" src="../assets/img/material.svg" alt="" matTooltip="Material angular">
-                    </div>
-                </mat-card>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center">
-            <a class="card" href="https://rol.yosiftware.es/" target="_blank">
-                <mat-card id="fichas">
-                    <p>Fichas 3.5</p>
-                    <div class="techs">
-                        <img class="angular" src="../assets/img/angular.png" alt=""
-                            matTooltip="Angular - Framework del proyecto">
-                        <img class="firebase" src="../assets/img/firebase.png" alt=""
-                            matTooltip="Firebase - Hosting, Realtime database y Authentication">
-                        <img class="material" src="../assets/img/material.svg" alt="" matTooltip="Material angular">
-                        <img class="bootstrap" src="../assets/img/bootstrap.png" alt="" matTooltip="Bootstrap">
-                        <img class="python" src="../assets/img/python.png" alt=""
-                            matTooltip="Python - Api conexión Sql server">
-                        <img class="sqlserver" src="../assets/img/sqlserver.png" alt=""
-                            matTooltip="Sql server - Persistencia de datos">
-                    </div>
-                </mat-card>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 d-flex justify-content-around align-items-center">
-            <a class="card" href="https://libros.yosiftware.es/" target="_blank" style="transform:perspective(500px) rotateX(-0.802778deg) rotateY(-6.17972deg);">
-                <mat-card id="libros">
-                    <p>Memoria</p>
-                    <p class="bajar">bibliográfica</p>
-                    <div class="techs">
-                        <img class="angular" src="../assets/img/angular.png" alt=""
-                            matTooltip="Angular - Framework del proyecto">
-                        <img class="firebase" src="../assets/img/firebase.png" alt=""
-                            matTooltip="Firebase - Hosting">
-                        <img class="material" src="../assets/img/material.svg" alt="" matTooltip="Material angular">
-                        <img class="bootstrap" src="../assets/img/bootstrap.png" alt="" matTooltip="Bootstrap">
-                        <img class="python" src="../assets/img/spring.png" alt=""
-                            matTooltip="Spring - Api conexión Sql server">
-                        <img class="sqlserver" src="../assets/img/sqlserver.png" alt=""
-                            matTooltip="Sql server - Persistencia de datos">
-                    </div>
-                </mat-card>
-            </a>
-        </div>
-    </div>
+        </section>
+
+        <section class="featured-projects">
+            <div class="shadows">
+                <div class="featured-slot" *ngFor="let project of featuredProjects">
+                    <div class="cardShadow"></div>
+                </div>
+            </div>
+
+            <div class="featured-slot" *ngFor="let project of featuredProjects">
+                <a class="card featured-card" [href]="project.url" target="_blank" [style.transform]="project.initialTransform || null">
+                    <mat-card [id]="project.backgroundId" [ngClass]="project.imageClass">
+                        <p>{{ project.title }}</p>
+                        <p class="bajar" *ngIf="project.subtitle">{{ project.subtitle }}</p>
+                        <div class="techs" *ngIf="project.techs">
+                            <img *ngFor="let tech of project.techs" [class]="tech.className" [src]="tech.icon" [alt]="tech.name" [matTooltip]="tech.tooltip">
+                        </div>
+                    </mat-card>
+                </a>
+            </div>
+        </section>
+    </main>
+
     <div class="row reset">
         <button mat-raised-button (click)="resetCards();" *ngIf="resetVisible">Resetear</button>
     </div>

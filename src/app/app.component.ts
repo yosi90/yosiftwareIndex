@@ -1,16 +1,112 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+
+interface ProjectTech {
+    name: string;
+    icon: string;
+    className: string;
+    tooltip: string;
+}
+
+interface ProjectCard {
+    title: string;
+    subtitle?: string;
+    url: string;
+    kind: 'featured' | 'simple';
+    backgroundId?: string;
+    imageClass?: string;
+    description?: string;
+    techs?: ProjectTech[];
+    initialTransform?: string;
+}
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
     title = 'Yosiftware';
     resetVisible: boolean = false;
+    readonly featuredProjects: ProjectCard[] = [
+        {
+            title: 'Curriculum',
+            url: 'https://cv.yosiftware.es/',
+            kind: 'featured',
+            backgroundId: 'cv',
+            imageClass: 'cv-card',
+            initialTransform: 'perspective(500px) rotateX(0.802778deg) rotateY(6.17972deg)',
+            techs: [
+                { name: 'Angular', icon: '../assets/img/angular.png', className: 'angular', tooltip: 'Angular - Framework del proyecto' },
+                { name: 'Firebase', icon: '../assets/img/firebase.png', className: 'firebase', tooltip: 'Firebase - Hosting' },
+                { name: 'Material angular', icon: '../assets/img/material.svg', className: 'material', tooltip: 'Material angular' },
+                { name: 'Bootstrap', icon: '../assets/img/bootstrap.png', className: 'bootstrap', tooltip: 'Bootstrap' }
+            ]
+        },
+        {
+            title: 'ZooGenesis',
+            url: 'https://zoogenesis.yosiftware.es/',
+            kind: 'featured',
+            backgroundId: 'zoogenesis',
+            techs: [
+                { name: 'Angular', icon: '../assets/img/angular.png', className: 'angular', tooltip: 'Angular - Framework del proyecto' },
+                { name: 'Firebase', icon: '../assets/img/firebase.png', className: 'firebase', tooltip: 'Firebase - Hosting, Realtime database y Authentication' },
+                { name: 'Material angular', icon: '../assets/img/material.svg', className: 'material', tooltip: 'Material angular' }
+            ]
+        },
+        {
+            title: 'Fichas 3.5',
+            url: 'https://rol.yosiftware.es/',
+            kind: 'featured',
+            backgroundId: 'fichas',
+            techs: [
+                { name: 'Angular', icon: '../assets/img/angular.png', className: 'angular', tooltip: 'Angular - Framework del proyecto' },
+                { name: 'Firebase', icon: '../assets/img/firebase.png', className: 'firebase', tooltip: 'Firebase - Hosting, Realtime database y Authentication' },
+                { name: 'Material angular', icon: '../assets/img/material.svg', className: 'material', tooltip: 'Material angular' },
+                { name: 'Bootstrap', icon: '../assets/img/bootstrap.png', className: 'bootstrap', tooltip: 'Bootstrap' },
+                { name: 'Python', icon: '../assets/img/python.png', className: 'python', tooltip: 'Python - Api conexión Sql server' },
+                { name: 'Sql server', icon: '../assets/img/sqlserver.png', className: 'sqlserver', tooltip: 'Sql server - Persistencia de datos' }
+            ]
+        },
+        {
+            title: 'Memoria',
+            subtitle: 'bibliográfica',
+            url: 'https://libros.yosiftware.es/',
+            kind: 'featured',
+            backgroundId: 'libros',
+            initialTransform: 'perspective(500px) rotateX(-0.802778deg) rotateY(-6.17972deg)',
+            techs: [
+                { name: 'Angular', icon: '../assets/img/angular.png', className: 'angular', tooltip: 'Angular - Framework del proyecto' },
+                { name: 'Firebase', icon: '../assets/img/firebase.png', className: 'firebase', tooltip: 'Firebase - Hosting' },
+                { name: 'Material angular', icon: '../assets/img/material.svg', className: 'material', tooltip: 'Material angular' },
+                { name: 'Bootstrap', icon: '../assets/img/bootstrap.png', className: 'bootstrap', tooltip: 'Bootstrap' },
+                { name: 'Spring', icon: '../assets/img/spring.png', className: 'python', tooltip: 'Spring - Api conexión Sql server' },
+                { name: 'Sql server', icon: '../assets/img/sqlserver.png', className: 'sqlserver', tooltip: 'Sql server - Persistencia de datos' }
+            ]
+        }
+    ];
+    readonly simpleProjects: ProjectCard[] = [
+        {
+            title: 'Día a día',
+            url: 'https://dia.yosiftware.es/',
+            kind: 'simple',
+            imageClass: 'diaadia',
+            description: 'Soporte psicológico para registrar cada día tu desempeño en distintas áreas.'
+        },
+        {
+            title: 'Poke Voice',
+            url: 'https://poke-voice.yosiftware.es/',
+            kind: 'simple',
+            imageClass: 'pokevoice',
+            description: 'Juego de voz para descubrir y completar la Pokedex.'
+        }
+    ];
 
-    ngOnInit(): void {
-        const cards: NodeListOf<HTMLElement> = document.querySelectorAll(".card");
+    ngAfterViewInit(): void {
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            return;
+        }
+
+        const cards: NodeListOf<HTMLElement> = document.querySelectorAll(".featured-card");
 
         if (cards) {
             cards.forEach((card: HTMLElement) => {
@@ -41,14 +137,13 @@ export class AppComponent implements OnInit {
     }
 
     resetCards() {
-        const cards: NodeListOf<HTMLElement> = document.querySelectorAll(".card");
-        // cards.forEach(c => {
-        //     c.style.transform = "none";
-        // });
-        cards[0].style.transform = "perspective(500px) rotateX(0.802778deg) rotateY(6.17972deg)";
-        cards[1].style.transform = "none";
-        cards[2].style.transform = "none";
-        cards[3].style.transform = "perspective(500px) rotateX(-0.802778deg) rotateY(-6.17972deg)";
+        const cards: NodeListOf<HTMLElement> = document.querySelectorAll(".featured-card");
+
+        cards.forEach((card: HTMLElement, index: number) => {
+            card.style.transform = this.featuredProjects[index].initialTransform || "none";
+            card.style.boxShadow = "none";
+        });
+
         this.resetVisible = false;
     }
 }
