@@ -14,6 +14,7 @@ interface ProjectCard {
     kind: 'featured' | 'simple';
     backgroundId?: string;
     imageClass?: string;
+    backgroundImage?: string;
     description?: string;
     techs?: ProjectTech[];
     initialTransform?: string;
@@ -90,6 +91,7 @@ export class AppComponent implements AfterViewInit {
             url: 'https://dia.yosiftware.es/',
             kind: 'simple',
             imageClass: 'diaadia',
+            backgroundImage: '../assets/img/diaadia.png',
             description: 'Soporte psicológico para registrar cada día tu desempeño en distintas áreas.'
         },
         {
@@ -97,7 +99,16 @@ export class AppComponent implements AfterViewInit {
             url: 'https://poke-voice.yosiftware.es/',
             kind: 'simple',
             imageClass: 'pokevoice',
+            backgroundImage: '../assets/img/pokevoice.png',
             description: 'Juego de voz para descubrir y completar la Pokedex.'
+        },
+        {
+            title: 'Tv',
+            url: 'https://tv.yosiftware.es/',
+            kind: 'simple',
+            imageClass: 'tv',
+            backgroundImage: '../assets/img/tv.png',
+            description: 'Acceso a la aplicación de televisión.'
         }
     ];
 

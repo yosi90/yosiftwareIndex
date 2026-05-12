@@ -3,7 +3,7 @@
         <section class="simple-projects">
             <a class="simple-card" *ngFor="let project of simpleProjects" [href]="project.url" target="_blank" [attr.aria-label]="project.title">
                 <mat-card>
-                    <div class="simple-image" [ngClass]="project.imageClass"></div>
+                    <div class="simple-image" [style.background-image]="'url(' + project.backgroundImage + ')'"></div>
                     <p class="simple-title">{{ project.title }}</p>
                 </mat-card>
             </a>
