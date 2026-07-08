@@ -109,6 +109,14 @@ export class AppComponent implements AfterViewInit {
             imageClass: 'tv',
             backgroundImage: '../assets/img/tv.png',
             description: 'Acceso a la aplicación de televisión.'
+        },
+        {
+            title: 'Syllabus ISTQB',
+            url: 'https://istqb.yosiftware.es/',
+            kind: 'simple',
+            imageClass: 'syllabus-istqb',
+            backgroundImage: '../assets/img/syllabus%20istqb.png',
+            description: 'Acceso al syllabus ISTQB.'
         }
     ];
 
