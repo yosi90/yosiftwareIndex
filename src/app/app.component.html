@@ -1,28 +1,57 @@
-<div class="container-fluid">
-    <main class="projects">
-        <section class="simple-projects">
-            <a class="simple-card" *ngFor="let project of simpleProjects" [href]="project.url" target="_blank" [attr.aria-label]="project.title">
-                <mat-card>
-                    <div class="simple-image" [style.background-image]="'url(' + project.backgroundImage + ')'"></div>
-                    <p class="simple-title">{{ project.title }}</p>
-                </mat-card>
-            </a>
-        </section>
+<div class="page">
+    <header class="hero">
+        <img class="hero-logo" src="logo.svg" alt="" width="64" height="64">
+        <div class="hero-text">
+            <h1>Yosiftware</h1>
+            <p>Laboratorio de proyectos personales: herramientas, juegos y experimentos web.</p>
+        </div>
+    </header>
 
-        <section class="featured-projects">
-            <div class="shadows">
-                <div class="featured-slot" *ngFor="let project of featuredProjects">
-                    <div class="cardShadow"></div>
-                </div>
+    <main class="projects">
+        <section class="featured" aria-labelledby="featured-title">
+            <div class="section-head">
+                <h2 class="section-title" id="featured-title">Destacados</h2>
+                <button class="reset" [class.visible]="resetVisible" mat-raised-button type="button" (click)="resetCards()"
+                        [attr.tabindex]="resetVisible ? null : -1" [attr.aria-hidden]="!resetVisible">
+                    Resetear
+                </button>
             </div>
 
-            <div class="featured-slot" *ngFor="let project of featuredProjects">
-                <a class="card featured-card" [href]="project.url" target="_blank" [style.transform]="project.initialTransform || null">
-                    <mat-card [id]="project.backgroundId" [ngClass]="project.imageClass">
-                        <p>{{ project.title }}</p>
-                        <p class="bajar" *ngIf="project.subtitle">{{ project.subtitle }}</p>
-                        <div class="techs" *ngIf="project.techs">
-                            <img *ngFor="let tech of project.techs" [class]="tech.className" [src]="tech.icon" [alt]="tech.name" [matTooltip]="tech.tooltip">
+            <div class="featured-projects">
+                <div class="featured-slot" *ngFor="let project of featuredProjects">
+                    <div class="cardShadow" aria-hidden="true"></div>
+                    <a #featuredCard class="card featured-card" [href]="project.url" target="_blank" rel="noopener"
+                       [attr.aria-label]="project.title + (project.subtitle ? ' ' + project.subtitle : '') + ': ' + project.description"
+                       [style.transform]="project.initialTransform || null">
+                        <mat-card [ngClass]="project.imageClass" [style.background-image]="'url(' + project.backgroundImage + ')'">
+                            <span class="badge-new" *ngIf="project.isNew">Nuevo</span>
+                            <div class="card-title">
+                                <p>{{ project.title }}</p>
+                                <p class="subtitle" *ngIf="project.subtitle">{{ project.subtitle }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-description">{{ project.description }}</p>
+                                <div class="techs" *ngIf="project.techs?.length">
+                                    <img *ngFor="let tech of project.techs" [src]="tech.icon" [alt]="tech.name" [matTooltip]="tech.tooltip">
+                                </div>
+                            </div>
+                        </mat-card>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="more" aria-labelledby="more-title">
+            <h2 class="section-title" id="more-title">Más proyectos</h2>
+
+            <div class="simple-projects">
+                <a class="simple-card" *ngFor="let project of simpleProjects" [href]="project.url" target="_blank" rel="noopener">
+                    <mat-card>
+                        <div class="simple-image" [style.background-image]="'url(' + project.backgroundImage + ')'"></div>
+                        <span class="badge-new" *ngIf="project.isNew">Nuevo</span>
+                        <div class="simple-info">
+                            <p class="simple-title">{{ project.title }}</p>
+                            <p class="simple-description">{{ project.description }}</p>
                         </div>
                     </mat-card>
                 </a>
@@ -30,34 +59,31 @@
         </section>
     </main>
 
-    <div class="row reset">
-        <button mat-raised-button (click)="resetCards();" *ngIf="resetVisible">Resetear</button>
-    </div>
-    <div id="pie" class="row align-items-center bg-black mt-3">
-        <div class="col-md-8 col-8">
-            <p id="copy" class="ms-2">
-                Copyright &copy; 2176
-                <a href="#">Yosiftware S.A.</a>
-            </p>
-        </div>
-        <div class="col-md-4 col-4">
-            <ul class="social-icons">
-                <li>
-                    <a class="github" href="https://github.com/yosi90" target="_blank">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="trello" href="https://trello.com/w/yosiftware" target="_blank">
-                        <i class="fa-brands fa-trello"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="linkedin" href="https://www.linkedin.com/in/AntonioJGonzález" target="_blank">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <footer id="pie">
+        <p id="copy">
+            Copyright &copy; 2176
+            <a href="#">Yosiftware S.A.</a>
+        </p>
+        <a class="mail" href="mailto:contacto@yosiftware.es">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span>contacto&#64;yosiftware.es</span>
+        </a>
+        <ul class="social-icons">
+            <li>
+                <a class="github" href="https://github.com/yosi90" target="_blank" rel="noopener" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="trello" href="https://trello.com/w/yosiftware" target="_blank" rel="noopener" aria-label="Trello">
+                    <i class="fa-brands fa-trello"></i>
+                </a>
+            </li>
+            <li>
+                <a class="linkedin" href="https://www.linkedin.com/in/AntonioJGonzález" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
 </div>
