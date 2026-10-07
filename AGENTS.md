@@ -1,0 +1,6 @@
+# AGENTS.md
+
+## Yosiftadísticas
+
+> En cuanto se copie `estadisticas-kit/` a la raíz, añade `/estadisticas-kit/` al `.gitignore` y comprueba que Git lo ignore. Su fuente vigente es la carpeta `estadisticas-kit/` del repositorio privado `yosi90/yosiftadisticas`, rama `main` (en el servidor, `C:\Users\Yosi\Desktop\Yosiftadisticas\estadisticas-kit`).
+> Esta web se mide de forma anónima con Yosiftadísticas. Lee `estadisticas-kit/README.md` e `estadisticas-kit/INTEGRACION.md` antes de tocar el `index.html`, el inicio de sesión o la cabecera Content-Security-Policy. El frontend carga `https://estadisticas.yosiftware.es/s.js` sin copiarlo ni configurarlo y guarda `localStorage["yosiftadisticas:excluir"] = "1"` cuando la sesión es de una cuenta del propietario, sin borrarla al cerrar sesión. La API solo indica a su frontend si la cuenta actual es del propietario; nunca envía datos ni eventos a Yosiftadísticas. No añadas eventos, identificadores ni datos de usuario al script. Si una CSP nueva, un service worker o un cambio de dominio pudiera bloquear el script, avisa al propietario con una petición para Yosiftadísticas (en el servidor, en `C:\Users\Yosi\Desktop\Yosiftadisticas\docs\peticiones\`).
